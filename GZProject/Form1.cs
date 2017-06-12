@@ -16,5 +16,21 @@ namespace GZProject
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (GZKatalogEntities bazaKatalog = new GZKatalogEntities())
+            {
+                string s = "Lista Uzytkownikow: \n";
+                foreach (Uzytkownik u in bazaKatalog.Uzytkownicy)
+                    s += u.Imię + " " + u.Nazwisko + " " + " "+ u.Login +" " + u.E_mail + "\n";
+                MessageBox.Show(s);
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

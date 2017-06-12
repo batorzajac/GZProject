@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GZKatalogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nazwa_albumu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwa_zespołu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rok_wydania" Type="int" Nullable="false" />
+          <Property Name="Czas" Type="time" Precision="7" />
+          <Property Name="Rodzaj" Type="varchar" MaxLength="20" />
+          <Property Name="Wytwórnia" Type="varchar" MaxLength="30" />
+          <Property Name="Okładka" Type="image" />
+        </EntityType>
+        <EntityType Name="Prawa">
+          <Key>
+            <PropertyRef Name="ID_praw" />
+          </Key>
+          <Property Name="ID_praw" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nazwa_praw" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Usuwanie" Type="int" Nullable="false" />
+          <Property Name="Dodawanie" Type="int" Nullable="false" />
+          <Property Name="Przegladanie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statystyki">
+          <Key>
+            <PropertyRef Name="Id_statystyki" />
+          </Key>
+          <Property Name="Id_statystyki" Type="int" Nullable="false" />
+          <Property Name="Id_utworu" Type="int" Nullable="false" />
+          <Property Name="Ostatnie_odtworzenie" Type="datetime" />
+          <Property Name="Piersze_odtworzenie" Type="datetime" />
+          <Property Name="Ilosc_wysłuchań" Type="int" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utwory">
+          <Key>
+            <PropertyRef Name="Id_utworu" />
+          </Key>
+          <Property Name="Id_utworu" Type="int" Nullable="false" />
+          <Property Name="Nr_utworu" Type="nchar" MaxLength="10" />
+          <Property Name="Nazwa_utworu" Type="varchar" MaxLength="50" />
+          <Property Name="Nazwa_albumu" Type="varchar" MaxLength="50" />
+          <Property Name="Czas" Type="time" Precision="7" />
+          <Property Name="feat." Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imię" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="E-mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hasło" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prawa " Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Data_urodzenia" Type="date" />
+        </EntityType>
+        <EntityType Name="Wykonawca">
+          <Key>
+            <PropertyRef Name="Nazwa" />
+          </Key>
+          <Property Name="Nazwa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kraj_pochodzenia" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Rok_debiutu" Type="int" Nullable="false" />
+          <Property Name="Rok_końca" Type="int" />
+          <Property Name="Ilość_członków" Type="int" />
+        </EntityType>
+        <EntityContainer Name="GZKatalogModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prawa" EntityType="Self.Prawa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statystyki" EntityType="Self.Statystyki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utwory" EntityType="Self.Utwory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wykonawca" EntityType="Self.Wykonawca" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GZKatalogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa_albumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa_zespołu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rok_wydania" Type="Int32" Nullable="false" />
+          <Property Name="Czas" Type="Time" Precision="7" />
+          <Property Name="Rodzaj" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Wytwórnia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Okładka" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Prawa">
+          <Key>
+            <PropertyRef Name="ID_praw" />
+          </Key>
+          <Property Name="ID_praw" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa_praw" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuwanie" Type="Int32" Nullable="false" />
+          <Property Name="Dodawanie" Type="Int32" Nullable="false" />
+          <Property Name="Przegladanie" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statystyki">
+          <Key>
+            <PropertyRef Name="Id_statystyki" />
+          </Key>
+          <Property Name="Id_statystyki" Type="Int32" Nullable="false" />
+          <Property Name="Id_utworu" Type="Int32" Nullable="false" />
+          <Property Name="Ostatnie_odtworzenie" Type="DateTime" Precision="3" />
+          <Property Name="Piersze_odtworzenie" Type="DateTime" Precision="3" />
+          <Property Name="Ilosc_wysłuchań" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utwor">
+          <Key>
+            <PropertyRef Name="Id_utworu" />
+          </Key>
+          <Property Name="Id_utworu" Type="Int32" Nullable="false" />
+          <Property Name="Nr_utworu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Nazwa_utworu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwa_albumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Czas" Type="Time" Precision="7" />
+          <Property Name="feat_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Uzytkownik">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Imię" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hasło" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prawa_" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Data_urodzenia" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Wykonawca">
+          <Key>
+            <PropertyRef Name="Nazwa" />
+          </Key>
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kraj_pochodzenia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rok_debiutu" Type="Int32" Nullable="false" />
+          <Property Name="Rok_końca" Type="Int32" />
+          <Property Name="Ilość_członków" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="GZKatalogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Album" EntityType="Self.Album" />
+          <EntitySet Name="Prawa" EntityType="Self.Prawa" />
+          <EntitySet Name="Statystyki" EntityType="Self.Statystyki" />
+          <EntitySet Name="Utwory" EntityType="GZKatalogModel.Utwor" />
+          <EntitySet Name="Uzytkownicy" EntityType="GZKatalogModel.Uzytkownik" />
+          <EntitySet Name="Wykonawca" EntityType="Self.Wykonawca" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GZKatalogModelStoreContainer" CdmEntityContainer="GZKatalogEntities">
+          <EntitySetMapping Name="Album">
+            <EntityTypeMapping TypeName="GZKatalogModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazwa_albumu" ColumnName="Nazwa_albumu" />
+                <ScalarProperty Name="Nazwa_zespołu" ColumnName="Nazwa_zespołu" />
+                <ScalarProperty Name="Rok_wydania" ColumnName="Rok_wydania" />
+                <ScalarProperty Name="Czas" ColumnName="Czas" />
+                <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
+                <ScalarProperty Name="Wytwórnia" ColumnName="Wytwórnia" />
+                <ScalarProperty Name="Okładka" ColumnName="Okładka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prawa">
+            <EntityTypeMapping TypeName="GZKatalogModel.Prawa">
+              <MappingFragment StoreEntitySet="Prawa">
+                <ScalarProperty Name="ID_praw" ColumnName="ID_praw" />
+                <ScalarProperty Name="Nazwa_praw" ColumnName="Nazwa_praw" />
+                <ScalarProperty Name="Usuwanie" ColumnName="Usuwanie" />
+                <ScalarProperty Name="Dodawanie" ColumnName="Dodawanie" />
+                <ScalarProperty Name="Przegladanie" ColumnName="Przegladanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statystyki">
+            <EntityTypeMapping TypeName="GZKatalogModel.Statystyki">
+              <MappingFragment StoreEntitySet="Statystyki">
+                <ScalarProperty Name="Id_statystyki" ColumnName="Id_statystyki" />
+                <ScalarProperty Name="Id_utworu" ColumnName="Id_utworu" />
+                <ScalarProperty Name="Ostatnie_odtworzenie" ColumnName="Ostatnie_odtworzenie" />
+                <ScalarProperty Name="Piersze_odtworzenie" ColumnName="Piersze_odtworzenie" />
+                <ScalarProperty Name="Ilosc_wysłuchań" ColumnName="Ilosc_wysłuchań" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utwory">
+            <EntityTypeMapping TypeName="GZKatalogModel.Utwor">
+              <MappingFragment StoreEntitySet="Utwory">
+                <ScalarProperty Name="Id_utworu" ColumnName="Id_utworu" />
+                <ScalarProperty Name="Nr_utworu" ColumnName="Nr_utworu" />
+                <ScalarProperty Name="Nazwa_utworu" ColumnName="Nazwa_utworu" />
+                <ScalarProperty Name="Nazwa_albumu" ColumnName="Nazwa_albumu" />
+                <ScalarProperty Name="Czas" ColumnName="Czas" />
+                <ScalarProperty Name="feat_" ColumnName="feat." />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzytkownicy">
+            <EntityTypeMapping TypeName="GZKatalogModel.Uzytkownik">
+              <MappingFragment StoreEntitySet="Uzytkownicy">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Imię" ColumnName="Imię" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="Hasło" ColumnName="Hasło" />
+                <ScalarProperty Name="Prawa_" ColumnName="Prawa " />
+                <ScalarProperty Name="Data_urodzenia" ColumnName="Data_urodzenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wykonawca">
+            <EntityTypeMapping TypeName="GZKatalogModel.Wykonawca">
+              <MappingFragment StoreEntitySet="Wykonawca">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Kraj_pochodzenia" ColumnName="Kraj_pochodzenia" />
+                <ScalarProperty Name="Rok_debiutu" ColumnName="Rok_debiutu" />
+                <ScalarProperty Name="Rok_końca" ColumnName="Rok_końca" />
+                <ScalarProperty Name="Ilość_członków" ColumnName="Ilość_członków" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
