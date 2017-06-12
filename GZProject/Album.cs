@@ -14,7 +14,6 @@ namespace GZProject
     
     public partial class Album
     {
-        public int ID { get; set; }
         public string Nazwa_albumu { get; set; }
         public string Nazwa_zespołu { get; set; }
         public int Rok_wydania { get; set; }

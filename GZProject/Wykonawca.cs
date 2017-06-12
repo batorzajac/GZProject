@@ -14,7 +14,7 @@ namespace GZProject
     
     public partial class Wykonawca
     {
-        public string Nazwa { get; set; }
+        public string Nazwa_zespolu { get; set; }
         public string Kraj_pochodzenia { get; set; }
         public int Rok_debiutu { get; set; }
         public Nullable<int> Rok_końca { get; set; }

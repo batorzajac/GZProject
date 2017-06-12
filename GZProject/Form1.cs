@@ -17,20 +17,76 @@ namespace GZProject
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        bool IsValidEmail(string email)
         {
-            using (GZKatalogEntities bazaKatalog = new GZKatalogEntities())
+            try
             {
-                string s = "Lista Uzytkownikow: \n";
-                foreach (Uzytkownik u in bazaKatalog.Uzytkownicy)
-                    s += u.Imię + " " + u.Nazwisko + " " + " "+ u.Login +" " + u.E_mail + "\n";
-                MessageBox.Show(s);
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
+        private void loginRegBox_TextChanged(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(loginRegBox.Text))
+            {
+                ValidateLabel.Text = ValidateLabel.Text + "\nPole Login nie może być puste";
+            }
+            else
+                ValidateLabel.Text = "";
+        }
 
+        private void emailRegBox_TextChanged(object sender, EventArgs e)
+        {
+            if (IsValidEmail(emailRegBox.Text))
+            {
+                ValidateLabel.Text = "";
+            }
+            else
+            {
+                ValidateLabel.Text = "Podany adres e-mail jest niepoprawny";
+            }
+        }
+
+        private void hasloRegBox_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(hasloRegBox.Text))
+            {
+                ValidateLabel.Text = ValidateLabel.Text + "\nPole Hasło nie może być puste";
+            }
+            else
+                ValidateLabel.Text = "";
+        }
+
+        private void confirmRegButton_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(ValidateLabel.Text))
+            {
+                //MessageBox.Show("dupa");
+                using (GZKatEntities bazaKatalog = new GZKatEntities())
+                {
+                    Uzytkownik nowyUzytkownik = new Uzytkownik()
+                    {
+                        Login = loginRegBox.Text,
+                        Hasło = hasloRegBox.Text,
+                        Imię = imieRegBox.Text,
+                        Nazwisko = nazwiskoRegBox.Text,
+                        E_mail = emailRegBox.Text,
+                        //Data_urodzenia = dataurReg.Value.Date
+                    };
+                    bazaKatalog.Uzytkownicy.Add(nowyUzytkownik);
+                    bazaKatalog.SaveChanges();
+                    MessageBox.Show("Uzytkownik " + loginRegBox.Text + " został dodany");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Podane dane są nieprawidłowe");
+            }
         }
     }
 }

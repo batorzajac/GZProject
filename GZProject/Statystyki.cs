@@ -14,11 +14,10 @@ namespace GZProject
     
     public partial class Statystyki
     {
-        public int Id_statystyki { get; set; }
+        public string Login { get; set; }
         public int Id_utworu { get; set; }
         public Nullable<System.DateTime> Ostatnie_odtworzenie { get; set; }
         public Nullable<System.DateTime> Piersze_odtworzenie { get; set; }
         public int Ilosc_wysłuchań { get; set; }
-        public string Login { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace GZProject
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GZKatalogEntities : DbContext
+    public partial class GZKatEntities : DbContext
     {
-        public GZKatalogEntities()
-            : base("name=GZKatalogEntities")
+        public GZKatEntities()
+            : base("name=GZKatEntities")
         {
         }
     
@@ -28,7 +28,7 @@ namespace GZProject
         public virtual DbSet<Album> Album { get; set; }
         public virtual DbSet<Prawa> Prawa { get; set; }
         public virtual DbSet<Statystyki> Statystyki { get; set; }
-        public virtual DbSet<Utwor> Utwory { get; set; }
+        public virtual DbSet<Utwor> Utwor { get; set; }
         public virtual DbSet<Uzytkownik> Uzytkownicy { get; set; }
         public virtual DbSet<Wykonawca> Wykonawca { get; set; }
     }

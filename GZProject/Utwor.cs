@@ -15,7 +15,7 @@ namespace GZProject
     public partial class Utwor
     {
         public int Id_utworu { get; set; }
-        public string Nr_utworu { get; set; }
+        public Nullable<int> Nr_utworu { get; set; }
         public string Nazwa_utworu { get; set; }
         public string Nazwa_albumu { get; set; }
         public Nullable<System.TimeSpan> Czas { get; set; }
