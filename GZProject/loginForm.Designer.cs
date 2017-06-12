@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -35,6 +36,12 @@
             this.hasloAutBox = new System.Windows.Forms.TextBox();
             this.loginAutBox = new System.Windows.Forms.TextBox();
             this.logowanieButton = new System.Windows.Forms.Button();
+            this.gZKatalogDataSet = new GZProject.GZKatalogDataSet();
+            this.uzytkownicyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uzytkownicyTableAdapter = new GZProject.GZKatalogDataSetTableAdapters.UzytkownicyTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.gZKatalogDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uzytkownicyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -46,6 +53,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "Rejestracja";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -56,6 +64,7 @@
             this.button3.TabIndex = 12;
             this.button3.Text = "Zaloguj jako gość";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label9
             // 
@@ -101,12 +110,38 @@
             this.logowanieButton.TabIndex = 7;
             this.logowanieButton.Text = "Zaloguj";
             this.logowanieButton.UseVisualStyleBackColor = true;
+            this.logowanieButton.Click += new System.EventHandler(this.logowanieButton_Click);
+            // 
+            // gZKatalogDataSet
+            // 
+            this.gZKatalogDataSet.DataSetName = "GZKatalogDataSet";
+            this.gZKatalogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // uzytkownicyBindingSource
+            // 
+            this.uzytkownicyBindingSource.DataMember = "Uzytkownicy";
+            this.uzytkownicyBindingSource.DataSource = this.gZKatalogDataSet;
+            // 
+            // uzytkownicyTableAdapter
+            // 
+            this.uzytkownicyTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(110, 283);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 21);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Zamknij";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 269);
+            this.ClientSize = new System.Drawing.Size(270, 316);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label9);
@@ -116,6 +151,9 @@
             this.Controls.Add(this.logowanieButton);
             this.Name = "loginForm";
             this.Text = "Logowanie";
+            this.Load += new System.EventHandler(this.loginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gZKatalogDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uzytkownicyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +168,9 @@
         private System.Windows.Forms.TextBox hasloAutBox;
         private System.Windows.Forms.TextBox loginAutBox;
         private System.Windows.Forms.Button logowanieButton;
+        private GZKatalogDataSet gZKatalogDataSet;
+        private System.Windows.Forms.BindingSource uzytkownicyBindingSource;
+        private GZKatalogDataSetTableAdapters.UzytkownicyTableAdapter uzytkownicyTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }

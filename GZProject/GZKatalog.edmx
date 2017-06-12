@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GZKatalogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GZKatalogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Album">
           <Key>
             <PropertyRef Name="Nazwa_albumu" />
@@ -17,6 +17,7 @@
           <Property Name="Rodzaj" Type="varchar" MaxLength="20" />
           <Property Name="Wytwórnia" Type="varchar" MaxLength="30" />
           <Property Name="Okładka" Type="image" />
+          <Property Name="Weryfikacja" Type="bit" />
         </EntityType>
         <EntityType Name="Prawa">
           <Key>
@@ -49,6 +50,7 @@
           <Property Name="Nazwa_albumu" Type="varchar" MaxLength="50" />
           <Property Name="Czas" Type="time" Precision="7" />
           <Property Name="feat." Type="varchar" MaxLength="50" />
+          <Property Name="Weryfikacja" Type="bit" />
         </EntityType>
         <EntityType Name="Uzytkownicy">
           <Key>
@@ -71,6 +73,7 @@
           <Property Name="Rok_debiutu" Type="int" Nullable="false" />
           <Property Name="Rok_końca" Type="int" />
           <Property Name="Ilość_członków" Type="int" />
+          <Property Name="Weryfikacja" Type="bit" />
         </EntityType>
         <EntityContainer Name="GZKatalogModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
@@ -80,8 +83,7 @@
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wykonawca" EntityType="Self.Wykonawca" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GZKatalogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -97,6 +99,7 @@
           <Property Name="Rodzaj" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Wytwórnia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Okładka" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Weryfikacja" Type="Boolean" />
         </EntityType>
         <EntityType Name="Prawa">
           <Key>
@@ -129,6 +132,7 @@
           <Property Name="Nazwa_albumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Czas" Type="Time" Precision="7" />
           <Property Name="feat_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Weryfikacja" Type="Boolean" />
         </EntityType>
         <EntityType Name="Uzytkownik">
           <Key>
@@ -151,6 +155,7 @@
           <Property Name="Rok_debiutu" Type="Int32" Nullable="false" />
           <Property Name="Rok_końca" Type="Int32" />
           <Property Name="Ilość_członków" Type="Int32" />
+          <Property Name="Weryfikacja" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="GZKatEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Album" EntityType="Self.Album" />
@@ -169,6 +174,7 @@
           <EntitySetMapping Name="Album">
             <EntityTypeMapping TypeName="GZKatalogModel.Album">
               <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="Weryfikacja" ColumnName="Weryfikacja" />
                 <ScalarProperty Name="Nazwa_albumu" ColumnName="Nazwa_albumu" />
                 <ScalarProperty Name="Nazwa_zespołu" ColumnName="Nazwa_zespołu" />
                 <ScalarProperty Name="Rok_wydania" ColumnName="Rok_wydania" />
@@ -204,6 +210,7 @@
           <EntitySetMapping Name="Utwor">
             <EntityTypeMapping TypeName="GZKatalogModel.Utwor">
               <MappingFragment StoreEntitySet="Utwor">
+                <ScalarProperty Name="Weryfikacja" ColumnName="Weryfikacja" />
                 <ScalarProperty Name="Id_utworu" ColumnName="Id_utworu" />
                 <ScalarProperty Name="Nr_utworu" ColumnName="Nr_utworu" />
                 <ScalarProperty Name="Nazwa_utworu" ColumnName="Nazwa_utworu" />
@@ -229,6 +236,7 @@
           <EntitySetMapping Name="Wykonawca">
             <EntityTypeMapping TypeName="GZKatalogModel.Wykonawca">
               <MappingFragment StoreEntitySet="Wykonawca">
+                <ScalarProperty Name="Weryfikacja" ColumnName="Weryfikacja" />
                 <ScalarProperty Name="Nazwa_zespolu" ColumnName="Nazwa_zespolu" />
                 <ScalarProperty Name="Kraj_pochodzenia" ColumnName="Kraj_pochodzenia" />
                 <ScalarProperty Name="Rok_debiutu" ColumnName="Rok_debiutu" />

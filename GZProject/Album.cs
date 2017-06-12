@@ -21,5 +21,6 @@ namespace GZProject
         public string Rodzaj { get; set; }
         public string Wytwórnia { get; set; }
         public byte[] Okładka { get; set; }
+        public Nullable<bool> Weryfikacja { get; set; }
     }
 }

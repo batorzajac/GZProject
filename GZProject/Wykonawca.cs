@@ -19,5 +19,6 @@ namespace GZProject
         public int Rok_debiutu { get; set; }
         public Nullable<int> Rok_końca { get; set; }
         public Nullable<int> Ilość_członków { get; set; }
+        public Nullable<bool> Weryfikacja { get; set; }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GZProject
 {
-    public partial class Form1 : Form
+    public partial class RegForm : Form
     {
-        public Form1()
+        public RegForm()
         {
             InitializeComponent();
         }
@@ -87,6 +87,13 @@ namespace GZProject
             {
                 MessageBox.Show("Podane dane są nieprawidłowe");
             }
+        }
+
+        private void anulujRegButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            loginForm dupa = new loginForm();
+            dupa.Show();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace GZProject
 {
-    partial class Form1
+    partial class RegForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.anulujRegButton = new System.Windows.Forms.Button();
             this.confirmRegButton = new System.Windows.Forms.Button();
             this.ValidateLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginRegBox
@@ -93,20 +94,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(140, 32);
+            this.label1.Location = new System.Drawing.Point(133, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Login";
+            this.label1.Text = "Login *";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(137, 58);
+            this.label2.Location = new System.Drawing.Point(130, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Hasło";
+            this.label2.Text = "Hasło *";
             // 
             // label3
             // 
@@ -129,11 +130,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(138, 136);
+            this.label5.Location = new System.Drawing.Point(131, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 10;
-            this.label5.Text = "E-mail";
+            this.label5.Text = "E-mail *";
             // 
             // label6
             // 
@@ -152,6 +153,7 @@
             this.anulujRegButton.TabIndex = 12;
             this.anulujRegButton.Text = "Anuluj";
             this.anulujRegButton.UseVisualStyleBackColor = true;
+            this.anulujRegButton.Click += new System.EventHandler(this.anulujRegButton_Click);
             // 
             // confirmRegButton
             // 
@@ -169,15 +171,25 @@
             this.ValidateLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ValidateLabel.Location = new System.Drawing.Point(0, 286);
             this.ValidateLabel.Name = "ValidateLabel";
-            this.ValidateLabel.Size = new System.Drawing.Size(72, 13);
+            this.ValidateLabel.Size = new System.Drawing.Size(14, 13);
             this.ValidateLabel.TabIndex = 14;
-            this.ValidateLabel.Text = "Wypełnij pola";
+            this.ValidateLabel.Text = "S";
             // 
-            // Form1
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(180, 199);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(199, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Pola oznaczone gwiazdką są wymagane";
+            // 
+            // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 299);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.ValidateLabel);
             this.Controls.Add(this.confirmRegButton);
             this.Controls.Add(this.anulujRegButton);
@@ -193,7 +205,7 @@
             this.Controls.Add(this.imieRegBox);
             this.Controls.Add(this.hasloRegBox);
             this.Controls.Add(this.loginRegBox);
-            this.Name = "Form1";
+            this.Name = "RegForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -217,5 +229,6 @@
         private System.Windows.Forms.Button anulujRegButton;
         private System.Windows.Forms.Button confirmRegButton;
         private System.Windows.Forms.Label ValidateLabel;
+        private System.Windows.Forms.Label label7;
     }
 }

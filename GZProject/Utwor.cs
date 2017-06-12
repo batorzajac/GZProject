@@ -20,5 +20,6 @@ namespace GZProject
         public string Nazwa_albumu { get; set; }
         public Nullable<System.TimeSpan> Czas { get; set; }
         public string feat_ { get; set; }
+        public Nullable<bool> Weryfikacja { get; set; }
     }
 }
